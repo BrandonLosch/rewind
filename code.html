@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>App Name: A Coding Challenge</title>
+    <title>Rewind: A Coding Challenge</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -35,7 +35,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
           <a class="navbar-brand" href="/index.html"
-            ><img src="/img/BIconWhite.png" height="50" />&nbsp;App Name</a
+            ><img src="/img/rewind-logo-small.png" height="50" /></a
           >
           <button
             class="navbar-toggler"
@@ -66,14 +66,12 @@
                 aria-current="page" href="/code.html">Code</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Repo</a>
+                <a class="nav-link" href="https://github.com/BrandonLosch/rewind">Repo</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="https://brandonlosch.com/">Portfolio</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
-              </li>
+            
             </ul>
           </div>
         </div>
@@ -87,20 +85,47 @@
         <div class="col-12 col-lg-8">
             <pre class="line-numbers">
                 <code class="language-js">
-                    function displayMessage() {
-
-                        let msg = document.getElementById("message").value;
-                        alert(msg);
-                        
+                  let dc = function(id){
+                    return document.getElementById(id);
+                };
+                
+                //get string from the page
+                //controller function
+                function getValue(){
+                    dc("alert").classList.add("invisible");
+                
+                    let userString = dc("userString").value;
+                
+                    let revString = reverseString(userString);
+                
+                    displayString(revString);
+                }
+                //reverse the string
+                //logic function
+                function reverseString(userString){
+                    let revString = [];
+                
+                    //reverse string using a for loop
+                    for (let index = userString.length - 1; index >= 0; index--) {
+                        revString += userString[index];
                     }
+                    return revString;
+                }
+                
+                //display alert with reversed string to the user
+                //view function
+                function displayString(revString){
+                    //write message
+                    dc("msg").innerHTML = `Your String Reversed is: ${revString}`;
+                
+                    //show alert
+                    dc("alert").classList.remove("invisible");
+                }
                 </code>
             </pre>
         </div>
         <!--Code Docs-->
         <div class="col-12 col-lg-4">
-            <p> The code is structured in one function</p>
-            <h5>displayMessage</h5>
-            <p>Prints out the message</p>
         </div>
       </div>
     </main>
